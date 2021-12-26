@@ -1,16 +1,17 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-}
+const firebaseConfig = initializeApp({
+  apiKey: 'AIzaSyBQVCFYd6sLXBi_YGQKvciqlgv068AXWkQ',
+  authDomain: 'myexpensetracker-a46f2.firebaseapp.com',
+  databaseURL: 'https://myexpensetracker-a46f2-default-rtdb.firebaseio.com',
+  projectId: 'myexpensetracker-a46f2',
+  storageBucket: 'myexpensetracker-a46f2.appspot.com',
+  messagingSenderId: '148066784519',
+  appId: '1:148066784519:web:4c57d74e4cefe96bc261a2',
+  measurementId: 'G-NDVY21ECTC',
+})
 
-const app = initializeApp(firebaseConfig)
-
-export const auth = getAuth(app)
+export const auth = getAuth(firebaseConfig)
+export const db = getFirestore(firebaseConfig)
