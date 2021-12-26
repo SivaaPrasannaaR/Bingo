@@ -6,8 +6,11 @@ import {
   signOut,
   updateProfile,
   sendPasswordResetEmail,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from 'firebase/auth'
-import { auth } from '../utils/firebase'
+import { auth } from '../utils/firebase_config'
+import { GenerateBingoNumbers } from '../components/GenerateBingoNumbers'
 
 export const UserContext = createContext({})
 
@@ -19,6 +22,7 @@ export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [numberHolder, setNumberHolder] = useState(GenerateBingoNumbers())
 
   useState(() => {
     setLoading(true)
@@ -63,6 +67,24 @@ export const UserContextProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email)
   }
 
+  //To sign in with Social Media
+  //to Signin with google
+  const googleProvider = new GoogleAuthProvider()
+
+  const socialMediaAuth = (provider) => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const socialMediaUser = result.user
+        setUser(socialMediaUser)
+        console.log(socialMediaUser)
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        const email = error.email
+      })
+  }
+
   const contextValue = {
     user,
     loading,
@@ -71,6 +93,10 @@ export const UserContextProvider = ({ children }) => {
     registerUser,
     logoutUser,
     forgotPassword,
+    socialMediaAuth,
+    googleProvider,
+    numberHolder,
+    setNumberHolder,
   }
   return (
     <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>

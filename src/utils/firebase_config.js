@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
-const firebaseConfig = initializeApp({
+export const firebaseConfig = initializeApp({
   apiKey: 'AIzaSyBQVCFYd6sLXBi_YGQKvciqlgv068AXWkQ',
   authDomain: 'myexpensetracker-a46f2.firebaseapp.com',
   databaseURL: 'https://myexpensetracker-a46f2-default-rtdb.firebaseio.com',
