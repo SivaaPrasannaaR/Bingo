@@ -1,56 +1,70 @@
-import { useState, useEffect, useContext, createContext } from 'react'
 import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-} from 'firebase/firestore'
-import { db } from '../utils/firebase_config'
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+  useCallback,
+} from 'react'
 
 export const DataContext = createContext({})
-
 export const useDataContext = () => {
   return useContext(DataContext)
 }
 
 export const DataContextProvider = ({ children }) => {
-  const [newName, setNewName] = useState('')
-  const [newAge, setNewAge] = useState(0)
+  const bingo = 'BINGO'
 
-  const [users, setUsers] = useState([])
-  const usersCollectionRef = collection(db, 'users')
+  const [numberOneHolder, setNumberOneHolder] = useState([])
+  const [numberTwoHolder, setNumberTwoHolder] = useState([])
 
-  const createUser = async (item) => {
-    await addDoc(usersCollectionRef, { num: item.num, used: item.used })
-    console.log(item)
+  const nLen = 5
+
+  let nextPlayer
+
+  //Player info = player score and player board
+  let player = {
+    nextPlayer: 1,
+    strikeNumber: 0,
+
+    p1Score: 0,
+    p2Score: 0,
+
+    p1Board: [],
+    p2Board: [],
   }
 
-  const updateUser = async (id, age) => {
-    const userDoc = doc(db, 'users', id)
-    const newFields = { age: age + 1 }
-    await updateDoc(userDoc, newFields)
+  //Row and Column Setup to check score
+  let rowColCheck = {
+    p1Row: [],
+    p1Column: [],
+
+    p2Row: [],
+    p2Column: [],
   }
 
-  const deleteUser = async (id) => {
-    const userDoc = doc(db, 'users', id)
-    await deleteDoc(userDoc)
+  //Diagonal Setup to check score
+  let checkDiagonal = {
+    d1: false,
+    d2: false,
+
+    p1d1: 0,
+    p1d2: 0,
+
+    p2d1: 0,
+    p2d2: 0,
   }
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef)
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
-
-    getUsers()
-  }, [])
 
   const contextValue = {
-    createUser,
-    updateUser,
-    deleteUser,
+    bingo,
+    numberOneHolder,
+    setNumberOneHolder,
+    numberTwoHolder,
+    setNumberTwoHolder,
+    nLen,
+    nextPlayer,
+    player,
+    rowColCheck,
+    checkDiagonal,
   }
 
   return (

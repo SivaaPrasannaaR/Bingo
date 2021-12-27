@@ -1,15 +1,21 @@
 import React from 'react'
+import { useDataContext } from '../context/DataContext'
 import { useUserContext } from '../context/UserContext'
-import BingoBoard from './BingoBoard'
-import { GenerateBingoNumbers } from './GenerateBingoNumbers'
+import { CreatePlayerBoard } from './functions/CreatePlayerBoard'
+import { GenerateBingoNumbers } from './functions/GenerateBingoNumbers'
+import { ScoreCheckMain } from './scoreCheck/ScoreCheckMain'
 
 const Dashboard = (props) => {
   const { user, logoutUser } = useUserContext()
-  const { numberHolder, setNumberHolder } = useUserContext()
+  const { setNumberOneHolder, setNumberTwoHolder } = useDataContext()
 
-  const generateBoard = () => {
-    setNumberHolder(GenerateBingoNumbers())
+  const generateBoard = async () => {
+    setNumberOneHolder(GenerateBingoNumbers())
+    setNumberTwoHolder(GenerateBingoNumbers())
+
     props.display(true)
+
+    // ScoreCheckMain()
   }
   return (
     <div className="dashboardContainer">

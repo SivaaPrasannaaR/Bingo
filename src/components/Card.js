@@ -1,23 +1,29 @@
 import React from 'react'
-import { useDataContext } from '../context/DataContext'
+export const GetStrikeNumber = () => {}
 
 export default function Card(props) {
-  const [bgColor, setBgColor] = React.useState('')
-  const { createUser, updateUser } = useDataContext()
-
-  // const [numberHolder, setNumberHolder] = React.useState(props.val)
+  const [bgColor, setBgColor] = React.useState(props.bgColor)
 
   const onClickHandler = () => {
-    setBgColor('red')
-    props.val.used = true
-    console.log('props.val.num', props.val.num)
-    console.log('props.val.used', props.val.used)
-    updateUser(props.val.num, props.val.used)
+    const updateNum = props.numberOneHolder
+    updateNum.map((item) => {
+      if (item.num == props.val.num) {
+        item.used = true
+        item.numColor = 'red'
+        setBgColor(item.numColor)
+      }
+    })
+
+    props.setNumberOneHolder(updateNum)
+    // const kkk = props.numberOneHolder.find((p) => p.num == props.val.num).numColor
+    // setBgColor(kkk)
+    // console.log(props.numberOneHolder)
+    // console.log(bgColor)
   }
 
   return (
     <div className="card">
-      <div key={props.val.num}>
+      <div>
         <button
           className="boardButton"
           style={{ backgroundColor: bgColor }}

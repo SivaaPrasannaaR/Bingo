@@ -3,11 +3,15 @@ import Auth from './Screen/Login_Signup/loginIndex'
 import Dashboard from './components/Dashboard'
 import BingoBoard from './components/BingoBoard'
 import { useUserContext } from './context/UserContext'
+import { useDataContext } from './context/DataContext'
 import ScoreBoard from './components/ScoreBoard'
+import { GenerateBingoNumbers } from './components/functions/GenerateBingoNumbers'
 
 function App() {
   const { user, loading, error } = useUserContext()
-  const [displayBoard, setDisplayBoard] = useState(true)
+  const [displayBoard, setDisplayBoard] = useState(false)
+  const { numberOneHolder, setNumberOneHolder } = useDataContext()
+  // console.log(numberOneHolder)
 
   return (
     <div className="App">

@@ -10,7 +10,6 @@ import {
   GoogleAuthProvider,
 } from 'firebase/auth'
 import { auth } from '../utils/firebase_config'
-import { GenerateBingoNumbers } from '../components/GenerateBingoNumbers'
 
 export const UserContext = createContext({})
 
@@ -22,7 +21,6 @@ export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [numberHolder, setNumberHolder] = useState(GenerateBingoNumbers())
 
   useState(() => {
     setLoading(true)
@@ -95,8 +93,6 @@ export const UserContextProvider = ({ children }) => {
     forgotPassword,
     socialMediaAuth,
     googleProvider,
-    numberHolder,
-    setNumberHolder,
   }
   return (
     <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>

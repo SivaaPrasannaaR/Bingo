@@ -1,15 +1,23 @@
 import React from 'react'
+import { useDataContext } from '../context/DataContext'
 import Card from './Card'
-import { GenerateBingoNumbers } from './GenerateBingoNumbers'
 
 const BingoBoard = () => {
-  const [numberHolder, setNumberHolder] = React.useState(GenerateBingoNumbers())
-
+  const { numberOneHolder, setNumberOneHolder } = useDataContext()
+  console.log('BingoBoard', numberOneHolder)
   return (
     <div className="bingoBoardContainer">
       <div className="wrapper">
-        {numberHolder.map((item) => {
-          return <Card val={item} />
+        {numberOneHolder.map((item) => {
+          return (
+            <Card
+              key={item.num}
+              val={item}
+              numberOneHolder={numberOneHolder}
+              setNumberOneHolder={setNumberOneHolder}
+              bgColor={item.numColor}
+            />
+          )
         })}
       </div>
     </div>
