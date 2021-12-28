@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDataContext } from '../context/DataContext'
 import { useUserContext } from '../context/UserContext'
-import { CreatePlayerBoard } from './functions/CreatePlayerBoard'
-import { GenerateBingoNumbers } from './functions/GenerateBingoNumbers'
-import { ScoreCheckMain } from './scoreCheck/ScoreCheckMain'
+import { player } from '../components/functions/AssignValues'
+import { GenerateBingoNumbers } from '../components/functions/GenerateBingoNumbers'
 
 const Dashboard = (props) => {
   const { user, logoutUser } = useUserContext()
   const { setNumberOneHolder, setNumberTwoHolder } = useDataContext()
 
   const generateBoard = async () => {
-    setNumberOneHolder(GenerateBingoNumbers())
-    setNumberTwoHolder(GenerateBingoNumbers())
+    player.p1 = GenerateBingoNumbers()
+    player.p2 = GenerateBingoNumbers()
+    await setNumberOneHolder(player.p1)
+    await setNumberTwoHolder(player.p2)
 
     props.display(true)
 
-    // ScoreCheckMain()
+    console.log(player.p1)
+    console.log(player.p2)
   }
   return (
     <div className="dashboardContainer">
