@@ -1,5 +1,14 @@
 import { nLen } from './AssignValues'
 
+const AssignZeroValueToArray = (n) => {
+  let arr = []
+  for (let i = 0; i < n; i++) {
+    arr[i] = 0
+  }
+
+  return arr
+}
+
 let recomendateNum = 13
 let t3row = 0
 let t3column = 0
@@ -18,18 +27,10 @@ let row3Value = 0
 let column3Count = 0
 let column3Value = 0
 
-const AssignZeroValueToArray = (n) => {
-  let arr = []
-  for (let i = 0; i < n; i++) {
-    arr[i] = 0
-  }
-
-  return arr
-}
-
 export const RecomendedNumber = (rec) => {
   for (let i = 0; i < nLen; i++) {
     let j = 0
+    // console.log(rec)
     while (j < nLen) {
       if (!rec[i][j].used) {
         if (i === j || i + j === nLen - 1) {
@@ -112,7 +113,7 @@ export const RecomendedNumber = (rec) => {
     }
   }
   let priorityOrder = [
-    13, 7, 9, 17, 19, 1, 5, 21, 25, 8, 12, 14, 18, 3, 11, 15, 23, 2, 4, 6, 10,
+    13, 7, 9, 17, 19, 1, 5, 21, 25, 8, 18, 12, 14, 3, 23, 11, 15, 2, 4, 6, 10,
     16, 20, 22, 24,
   ]
   let i5 = 0
@@ -140,6 +141,7 @@ export const RecomendedNumber = (rec) => {
       aat++
     }
   }
+  console.log(recAll)
   return 13
 }
 
@@ -154,14 +156,14 @@ const tempColumn3 = (i, j, rec) => {
       recZero1 = rec[it][j].num
       count1 = recColumnCheck(it, j, rec) + recRowCheck(it, j, rec)
       if (it === j || it + j === nLen - 1) {
-        count1 += recDiagonalCheck(it, j, rec)
+        count1 = count1 + recDiagonalCheck(it, j, rec)
       }
       flag = 1
     } else if (!rec[it][j].used) {
       recZero2 = rec[it][j].num
       count2 = recColumnCheck(it, j, rec) + recRowCheck(it, j, rec)
       if (it === j || it + j === nLen - 1) {
-        count2 += recDiagonalCheck(it, j, rec)
+        count2 = count2 + recDiagonalCheck(it, j, rec)
       }
     }
   }
@@ -187,14 +189,14 @@ const tempRow3 = (i, j, rec) => {
       count1 = recRowCheck(i, jt, rec) + recColumnCheck(i, jt, rec)
 
       if (i === jt || i + jt === nLen - 1) {
-        count1 += recDiagonalCheck(i, jt, rec)
+        count1 = count1 + recDiagonalCheck(i, jt, rec)
       }
       flag = 1
     } else if (!rec[i][jt].used) {
       recZero2 = rec[i][jt].num
       count2 = recRowCheck(i, jt, rec) + recColumnCheck(i, jt, rec)
       if (i === jt || i + jt === nLen - 1) {
-        count2 += recDiagonalCheck(i, jt, rec)
+        count2 = count2 + recDiagonalCheck(i, jt, rec)
       }
     }
   }

@@ -1,22 +1,20 @@
 import React from 'react'
-import { useDataContext } from '../context/DataContext'
 import Card from './Card'
 
-const BingoBoard = () => {
-  const { numberOneHolder, setNumberOneHolder } = useDataContext()
-  console.log('BingoBoard', numberOneHolder)
+const BingoBoard = (props) => {
+  // console.log('BingoBoard', props.numberHolder)
+  const decidePlayer = props.player === 'p1' ? true : false
 
   return (
     <div className="bingoBoardContainer">
       <div className="wrapper">
-        {numberOneHolder.map((item, id) => {
+        {props.numberHolder.map((item, index) => {
           return (
             <Card
               key={item.num}
+              id={index}
               val={item}
-              numberOneHolder={numberOneHolder}
-              setNumberOneHolder={setNumberOneHolder}
-              bgColor={'teal'}
+              decidePlayer={decidePlayer}
             />
           )
         })}

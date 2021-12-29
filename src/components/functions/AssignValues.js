@@ -1,7 +1,7 @@
 export const bingo = 'BINGO'
 export const nLen = 5
-export let nextPlayer
 
+//info about players
 export let player = {
   nextPlayer: 1,
   strikeNumber: 0,
@@ -33,14 +33,3 @@ export let diagonalCheck = {
   p2d1: false,
   p2d2: false,
 }
-// export const AssignValues = (p1, p2) => {
-//   player.p1Board = CreatePlayerBoard(p1)
-//   player.p2Board = CreatePlayerBoard(p2)
-
-//   console.log(p1)
-//   console.log(p2)
-
-//   console.log(player.p1Board)
-//   console.log(player.p2Board)
-//   return <div />
-// }

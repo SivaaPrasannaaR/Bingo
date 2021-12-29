@@ -12,11 +12,9 @@ export const DataContextProvider = ({ children }) => {
   const [p1Score, setP1Score] = useState(0)
   const [p2Score, setP2Score] = useState(0)
 
-  // const [bgColor, setBgColor] = useState()
+  const [recNumber, setRecNumber] = useState(0)
 
-  // const [strikeNumber, setStrikeNumber] = useState(0)
-
-  //Player info = player score and player board
+  const [bgColor, setBgColor] = useState(true)
 
   const contextValue = {
     numberOneHolder,
@@ -27,6 +25,10 @@ export const DataContextProvider = ({ children }) => {
     setP1Score,
     p2Score,
     setP2Score,
+    recNumber,
+    setRecNumber,
+    bgColor,
+    setBgColor,
   }
 
   return (

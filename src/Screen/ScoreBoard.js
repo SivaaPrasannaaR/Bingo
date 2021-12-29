@@ -4,7 +4,7 @@ import { bingo } from '../components/functions/AssignValues'
 import { useDataContext } from '../context/DataContext'
 
 const ScoreBoard = () => {
-  const { p1Score, p2Score } = useDataContext()
+  const { p1Score, p2Score, recNumber } = useDataContext()
 
   // console.log('p1 ', p1Score)
   // console.log('p2 ', p2Score)
@@ -14,7 +14,7 @@ const ScoreBoard = () => {
         <h1>Score Board</h1>
         <div className="opponentChoice">
           <h2>Opponent Choice</h2>
-          <button className="boardButton">5</button>
+          <button className="boardButton">{recNumber}</button>
         </div>
         <div className="myScoreDiv">
           <h3>My Score: {bingo.substring(0, p1Score)}</h3>
