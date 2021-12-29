@@ -77,9 +77,10 @@ export const UserContextProvider = ({ children }) => {
         console.log(socialMediaUser)
       })
       .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        const email = error.email
+        // const errorCode = error.code
+        // const errorMessage = error.message
+        // const email = error.email
+        console.log(error)
       })
   }
 

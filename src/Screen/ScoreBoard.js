@@ -1,8 +1,13 @@
 import React from 'react'
-import { useUserContext } from '../context/UserContext'
+import { bingo } from '../components/functions/AssignValues'
+
+import { useDataContext } from '../context/DataContext'
 
 const ScoreBoard = () => {
-  const { user, logoutUser } = useUserContext()
+  const { p1Score, p2Score } = useDataContext()
+
+  // console.log('p1 ', p1Score)
+  // console.log('p2 ', p2Score)
   return (
     <div className="scoreBoardContainer">
       <div className="scoreDiv">
@@ -12,10 +17,10 @@ const ScoreBoard = () => {
           <button className="boardButton">5</button>
         </div>
         <div className="myScoreDiv">
-          <h3>My Score: Bingo</h3>
+          <h3>My Score: {bingo.substring(0, p1Score)}</h3>
         </div>
         <div className="opponentScoreDiv">
-          <h3>Opponent Score: Bingo</h3>
+          <h3>Opponent Score: {bingo.substring(0, p2Score)}</h3>
         </div>
       </div>
     </div>

@@ -1,10 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useCallback,
-} from 'react'
+import { useState, useContext, createContext } from 'react'
 
 export const DataContext = createContext({})
 export const useDataContext = () => {
@@ -14,6 +8,10 @@ export const useDataContext = () => {
 export const DataContextProvider = ({ children }) => {
   const [numberOneHolder, setNumberOneHolder] = useState([])
   const [numberTwoHolder, setNumberTwoHolder] = useState([])
+
+  const [p1Score, setP1Score] = useState(0)
+  const [p2Score, setP2Score] = useState(0)
+
   // const [bgColor, setBgColor] = useState()
 
   // const [strikeNumber, setStrikeNumber] = useState(0)
@@ -25,8 +23,10 @@ export const DataContextProvider = ({ children }) => {
     setNumberOneHolder,
     numberTwoHolder,
     setNumberTwoHolder,
-    // bgColor,
-    // setBgColor,
+    p1Score,
+    setP1Score,
+    p2Score,
+    setP2Score,
   }
 
   return (

@@ -15,9 +15,10 @@ const Dashboard = (props) => {
     await setNumberTwoHolder(player.p2)
 
     props.display(true)
+    // setBgColor(!bgColor)
 
-    console.log(player.p1)
-    console.log(player.p2)
+    // console.log(player.p1)
+    // console.log(player.p2)
   }
   return (
     <div className="dashboardContainer">

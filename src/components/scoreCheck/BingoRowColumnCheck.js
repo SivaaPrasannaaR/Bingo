@@ -17,6 +17,7 @@ const CreatePlayerBoard = (arr) => {
   }
   return nArr
 }
+
 const checkRowColumn = (ck) => {
   let pColumn = []
   let pRow = []
