@@ -13,8 +13,8 @@ let recomendateNum = 13
 let t3row = 0
 let t3column = 0
 let rt = 0
-let ttempRow = 0
-let ttempColumn = 0
+let usedRowCount = 0
+let usedColumnCount = 0
 let row3ArrCount = AssignZeroValueToArray(10) // = new let[10];
 let row3ArrValue = AssignZeroValueToArray(10) //= new let[10];
 let column3ArrCount = AssignZeroValueToArray(10) // = new let[10];
@@ -34,37 +34,41 @@ export const RecomendedNumber = (rec) => {
     while (j < nLen) {
       if (!rec[i][j].used) {
         if (i === j || i + j === nLen - 1) {
-          let ttemp = recDiagonalCheck(i, j, rec)
-          if (ttemp === 4 && (i !== 2 || j !== 2)) {
+          let usedDiagonalCount = recDiagonalCheck(i, j, rec)
+          if (usedDiagonalCount === 4 && (i !== 2 || j !== 2)) {
             return tempDiagonal(i, j, rec)
           }
-          recAll[rt] = recAll[rt] + ttemp
+          recAll[rt] = recAll[rt] + usedDiagonalCount
         }
 
-        ttempRow = recRowCheck(i, j, rec)
-        if (ttempRow === 3) {
+        usedRowCount = recRowCheck(i, j, rec)
+
+        if (usedRowCount === 3) {
           row3Count = 0
           row3Value = tempRow3(i, j, rec)
           row3ArrCount[t3row] = row3Count
           row3ArrValue[t3row] = row3Value
           t3row++
         }
-        if (ttempRow === 4) {
+
+        if (usedRowCount === 4) {
           return tempRow4(i, j, rec)
         }
-        recAll[rt] = recAll[rt] + ttempRow
-        ttempColumn = recColumnCheck(i, j, rec)
-        if (ttempColumn === 3) {
+        recAll[rt] = recAll[rt] + usedRowCount
+
+        usedColumnCount = recColumnCheck(i, j, rec)
+        if (usedColumnCount === 3) {
           column3Count = 0
           column3Value = tempColumn3(i, j, rec)
           column3ArrCount[t3row] = column3Count
           column3ArrValue[t3row] = column3Value
           t3column++
         }
-        if (ttempColumn === 4) {
+
+        if (usedColumnCount === 4) {
           return tempColumn4(i, j, rec)
         }
-        recAll[rt] = recAll[rt] + ttempColumn
+        recAll[rt] = recAll[rt] + usedColumnCount
       }
       j++
       rt++
@@ -77,7 +81,8 @@ export const RecomendedNumber = (rec) => {
       recMax = recAll[i2]
     }
   }
-  if ((recMax !== 1 && ttempRow === 3) || ttempColumn === 3) {
+
+  if ((recMax !== 1 && usedRowCount === 3) || usedColumnCount === 3) {
     if (recMax - row3Count === 1) {
       let iitmax = row3ArrCount[1]
       for (let iit = 0; iit < nLen; iit++) {
@@ -98,12 +103,14 @@ export const RecomendedNumber = (rec) => {
       return column3Value
     }
   }
+
   let noOfMax = 0
   for (let i3 = 0; i3 < nLen * nLen; i3++) {
     if (recMax === recAll[i3]) {
       noOfMax++
     }
   }
+
   let sameMaxArr = AssignZeroValueToArray(noOfMax) //= new let[noOfMax]()
   let rt2 = 0
   for (let i4 = 0; i4 < nLen * nLen; i4++) {
@@ -112,6 +119,7 @@ export const RecomendedNumber = (rec) => {
       rt2++
     }
   }
+
   let priorityOrder = [
     13, 7, 9, 17, 19, 1, 5, 21, 25, 8, 18, 12, 14, 3, 23, 11, 15, 2, 4, 6, 10,
     16, 20, 22, 24,
@@ -305,18 +313,21 @@ const recColumnCheck = (i, j, rec) => {
 
 const recDiagonalCheck = (i, j, rec) => {
   let recZero = 0
+
+  // checking the index 13 position
   if (i === 2 && j === 2) {
+    //Left diagonal Check
     for (let it = 0; it < nLen; it++) {
       if (rec[it][it].used) {
         recZero++
       }
     }
-    let it2 = 0
-    for (let jt = nLen - 1; jt >= 0; jt--) {
+
+    //Right diagonal Check
+    for (let it2 = 0, jt = nLen - 1; jt >= 0; jt--, it2++) {
       if (rec[it2][jt].used) {
         recZero++
       }
-      it2++
     }
   } else if (i === j) {
     for (let it3 = 0; it3 < nLen; it3++) {
@@ -333,5 +344,6 @@ const recDiagonalCheck = (i, j, rec) => {
       it4++
     }
   }
+  console.log('recZero', recZero)
   return recZero
 }

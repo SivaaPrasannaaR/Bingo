@@ -1,5 +1,8 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
+
+// @extend .generalContainer; // to extend the class
+
 .loginscreen {
   display: flex;
   flex-direction: row;
