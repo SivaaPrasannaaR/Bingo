@@ -1,13 +1,5 @@
+import { AssignZeroValueToArray } from '../../generalFunction/AssignValueToArray'
 import { nLen } from './AssignValues'
-
-const AssignZeroValueToArray = (n) => {
-  let arr = []
-  for (let i = 0; i < n; i++) {
-    arr[i] = 0
-  }
-
-  return arr
-}
 
 let recomendateNum = 13
 let t3row = 0

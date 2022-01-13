@@ -189,7 +189,13 @@ input {
   position: relative;
   display: flex;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 90px;
+}
+.shooterWrapper {
+  display: grid;
+  /* grid-template-columns: repeat(5, auto); */
+  gap: 3.5rem;
+  justify-content: center;
 }
 
 .displayNumbers {
@@ -203,11 +209,12 @@ input {
   padding: 30px;
   font-size: 50px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .showDice {
   box-shadow: 0 1px 6px #ccc;
-  padding: 20px;
+  padding: 5px;
   position: relative;
   display: flex;
   margin-top: 80px;
@@ -215,7 +222,14 @@ input {
 }
 
 .rollDiceButton {
-  font-size: 30px;
+  font-size: 50px;
+  padding: 10px;
+  margin: 10px;
+  background-color: teal;
+  border: none;
+  color: white;
+  box-shadow: 0 1px 6px #ccc;
+  border-radius: 6px;
 }
 
 .displayImg {
@@ -227,4 +241,17 @@ input {
   padding: 10px;
   font-size: 50px;
   margin-bottom: 20px;
+}
+.displayMultiPlayer {
+  box-shadow: 0 1px 6px #ccc;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  flex: 1;
+
+  padding: 10px;
+  margin-right: 30px;
 }

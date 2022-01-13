@@ -4,6 +4,7 @@ const ShowNumbers = () => {
   return (
     // <div className="displayNumbers">
     <div>
+      <div className="numbersDiv">Roll Dice</div>
       <div className="numbersDiv">1</div>
       <div className="numbersDiv">3</div>
       <div className="numbersDiv">5</div>

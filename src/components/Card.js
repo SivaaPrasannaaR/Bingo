@@ -32,7 +32,7 @@ export default function Card(props) {
   })
 
   return (
-    <div className="card">
+    <div>
       <button
         className="boardButton"
         style={

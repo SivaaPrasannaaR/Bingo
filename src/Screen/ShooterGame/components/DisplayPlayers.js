@@ -1,50 +1,130 @@
-import React, { useState } from 'react'
-import img_0 from '../../../assets/img_4.png'
+import React, { useEffect, useState } from 'react'
 import DisplayImage from './DisplayImage'
+import { generateRandomNum } from '../functions/generateRandomNum'
+import { currentPlayer } from '../functions/AllShooterValue'
 
-export let handleBox1Count
-export let handleBox3Count
-export let handleBox5Count
-export let handleBox7Count
-export let handleBox9Count
+const DisplayPlayers = (props) => {
+  const [box1Count, setBox1Count] = useState(0)
+  const [box3Count, setBox3Count] = useState(0)
+  const [box5Count, setBox5Count] = useState(0)
+  const [box7Count, setBox7Count] = useState(0)
+  const [box9Count, setBox9Count] = useState(0)
 
-const DisplayPlayers = () => {
-  // const [box1Count, setBox1Count] = useState(0)
-  // const [box3Count, setBox3Count] = useState(0)
-  // const [box5Count, setBox5Count] = useState(0)
-  // const [box7Count, setBox7Count] = useState(0)
-  // const [box9Count, setBox9Count] = useState(0)
+  const handleBox1Count = {
+    add: () =>
+      setBox1Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState + 1
+      ),
 
-  let box1Count = 0
-  let box3Count = 0
-  let box5Count = 0
-  let box7Count = 0
-  let box9Count = 0
+    subtract: () =>
+      setBox1Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState - 1
+      ),
+  }
+  const handleBox3Count = {
+    add: () =>
+      setBox3Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState + 1
+      ),
 
-  handleBox1Count = () => {
-    // setBox1Count((prevState) => prevState + 1)
-    // console.log('1 called')
-    box1Count = box1Count + 1
+    subtract: () =>
+      setBox3Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState - 1
+      ),
   }
-  handleBox3Count = () => {
-    // setBox3Count((prevState) => prevState + 1)
-    box3Count = box3Count + 1
+  const handleBox5Count = {
+    add: () =>
+      setBox5Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState + 1
+      ),
+
+    subtract: () =>
+      setBox5Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState - 1
+      ),
   }
-  handleBox5Count = () => {
-    // setBox5Count((prevState) => prevState + 1)
-    box5Count = box5Count + 1
+  const handleBox7Count = {
+    add: () =>
+      setBox7Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState + 1
+      ),
+
+    subtract: () =>
+      setBox7Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState - 1
+      ),
   }
-  handleBox7Count = () => {
-    // setBox7Count((prevState) => prevState + 1)
-    box7Count = box7Count + 1
+  const handleBox9Count = {
+    add: () =>
+      setBox9Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState + 1
+      ),
+
+    subtract: () =>
+      setBox9Count((prevState) =>
+        prevState > 8 ? prevState - 8 : prevState - 1
+      ),
   }
-  handleBox9Count = () => {
-    // setBox9Count((prevState) => prevState + 1)
-    box9Count = box9Count + 1
+
+  // const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+
+  // useEffect(() => {
+  //   if (currentPlayer.playerTime > props.playerCount) {
+  //     currentPlayer.playerTime = 1
+  //   } else {
+  //     setDisableButton()
+  //   }
+  //   const setDisableButton = () => {
+  //     setIsButtonDisabled(false)
+  //   }
+  // }, [])
+
+  console.log('currentPlayer', currentPlayer.playerTime)
+
+  const [diceNumber, setDiceNumber] = useState(generateRandomNum())
+
+  const handleRandomNum = () => {
+    const random_number = generateRandomNum()
+    setDiceNumber(random_number)
+
+    if (random_number === 1) {
+      handleBox1Count.add()
+    } else if (random_number === 3) {
+      handleBox3Count.add()
+    } else if (random_number === 5) {
+      handleBox5Count.add()
+    } else if (random_number === 7) {
+      handleBox7Count.add()
+    } else if (random_number === 9) {
+      handleBox9Count.add()
+    }
+
+    // if (currentPlayer.playerTime > props.playerCount) {
+    //   currentPlayer.playerTime = 1
+    // } else {
+    //   currentPlayer.playerTime = currentPlayer.playerTime + 1
+    //   setIsButtonDisabled(false)
+    // }
   }
+
+  // const handleNum = () => {
+  //   for (let i = 0; i < 1000; i++) {
+  //     handleRandomNum()
+  //   }
+  // }
 
   return (
-    <div className="displayPlayers">
+    <div>
+      <div className="imgDiv">
+        <button
+          onClick={handleRandomNum}
+          className="rollDiceButton"
+          // disabled={props.player != currentPlayer.playerTime}
+          // disabled={isButtonDisabled}
+        >
+          {diceNumber}
+        </button>
+      </div>
       <div className="imgDiv">
         <DisplayImage count={box1Count} />
       </div>
