@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import DisplayImage from './DisplayImage'
 import { generateRandomNum } from '../functions/generateRandomNum'
 import { currentPlayer } from '../functions/AllShooterValue'
 
 const DisplayPlayers = (props) => {
-  const [box1Count, setBox1Count] = useState(0)
-  const [box3Count, setBox3Count] = useState(0)
-  const [box5Count, setBox5Count] = useState(0)
-  const [box7Count, setBox7Count] = useState(0)
-  const [box9Count, setBox9Count] = useState(0)
+  const [box1Count, setBox1Count] = React.useState(0)
+  const [box3Count, setBox3Count] = React.useState(0)
+  const [box5Count, setBox5Count] = React.useState(0)
+  const [box7Count, setBox7Count] = React.useState(0)
+  const [box9Count, setBox9Count] = React.useState(0)
 
   const handleBox1Count = {
     add: () =>
@@ -66,7 +66,7 @@ const DisplayPlayers = (props) => {
       ),
   }
 
-  // const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+  // const [isButtonDisabled, setIsButtonDisabled] = React.useState(true)
 
   // useEffect(() => {
   //   if (currentPlayer.playerTime > props.playerCount) {
@@ -81,7 +81,7 @@ const DisplayPlayers = (props) => {
 
   console.log('currentPlayer', currentPlayer.playerTime)
 
-  const [diceNumber, setDiceNumber] = useState(generateRandomNum())
+  const [diceNumber, setDiceNumber] = React.useState(generateRandomNum())
 
   const handleRandomNum = () => {
     const random_number = generateRandomNum()

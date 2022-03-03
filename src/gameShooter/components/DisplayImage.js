@@ -1,5 +1,4 @@
 import React from 'react'
-import { currentPlayer } from '../functions/AllShooterValue'
 import { getImage } from '../functions/getImage'
 
 const DisplayImage = (props) => {
