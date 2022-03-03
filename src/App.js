@@ -1,10 +1,11 @@
 import React from 'react'
-import Auth from './Screen/Login_Signup/loginIndex'
+import Auth from './commonScreen/login_Signup/loginIndex'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { useUserContext } from './context/UserContext'
-import { BingoIndex } from './Screen/Bingo/BingoIndex'
-import { HomeIndex } from './Screen/Home/HomeIndex'
-import { ShooterIndex } from './Screen/ShooterGame/ShooterIndex'
+import { BingoIndex } from './gameBingo/screen/BingoIndex.js'
+import { HomeIndex } from './commonScreen/home/HomeIndex'
+import { ShooterIndex } from './gameShooter/screen/ShooterIndex.js'
+// import RootRouter from './router/RootRouter'
 
 function App() {
   const { user, loading, error } = useUserContext()
@@ -28,6 +29,11 @@ function App() {
                 <Route exact path="/shootergame">
                   <ShooterIndex />
                 </Route>
+                {/* <Route path="/" component={RootRouter}>
+                  <Suspense fallback={false}>
+                    <RootRouter></RootRouter>
+                  </Suspense>
+                </Route> */}
               </Switch>
             ) : (
               <Auth />

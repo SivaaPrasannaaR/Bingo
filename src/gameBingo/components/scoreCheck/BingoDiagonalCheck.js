@@ -1,4 +1,4 @@
-import { diagonalCheck, player } from '../functions/AssignValues'
+import { diagonalCheck, player } from '../../functions/AssignValues'
 
 export const BingoDiagonalCheck = () => {
   //Player One Straight Diagonal  Check

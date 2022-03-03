@@ -1,4 +1,4 @@
-import { diagonalCheck, rowColCheck } from '../functions/AssignValues'
+import { diagonalCheck, rowColCheck } from '../../functions/AssignValues'
 import { BingoDiagonalCheck } from './BingoDiagonalCheck'
 import { BingoRowColumnCheck } from './BingoRowColumnCheck'
 

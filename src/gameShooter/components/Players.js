@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AssignOrderValueToArray } from '../../../generalFunction/AssignValueToArray'
+import { AssignOrderValueToArray } from '../../commonFunction/AssignValueToArray'
 import DisplayPlayers from './DisplayPlayers'
 
 export const Players = (props) => {

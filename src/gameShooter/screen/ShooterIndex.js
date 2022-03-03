@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Dashboard from '../Dashboard'
-import ShowNumbers from './components/ShowNumbers'
-import { Players } from './components/Players'
+import Dashboard from '../components/dashboard/Dashboard'
+import ShowNumbers from '../components/ShowNumbers'
+import { Players } from '../components/Players'
 
 export const ShooterIndex = () => {
   const [display, setDisplay] = useState(false)

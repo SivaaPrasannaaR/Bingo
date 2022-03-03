@@ -1,4 +1,4 @@
-import { nLen, player, rowColCheck } from '../functions/AssignValues'
+import { nLen, player, rowColCheck } from '../../functions/AssignValues'
 
 export const BingoRowColumnCheck = (props) => {
   player.p1Board = CreatePlayerBoard(player.p1)

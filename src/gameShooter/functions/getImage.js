@@ -1,12 +1,12 @@
-import img_0 from '../../../assets/img_0.png'
-import img_1 from '../../../assets/img_1.png'
-import img_2 from '../../../assets/img_2.png'
-import img_3 from '../../../assets/img_3.png'
-import img_4 from '../../../assets/img_4.png'
-import img_5 from '../../../assets/img_5.jpg'
-import img_6 from '../../../assets/img_6.jpg'
-import img_7 from '../../../assets/img_7.jpg'
-import img_8 from '../../../assets/img_8.jpg'
+import img_0 from '../../assets/gameShooter/img_0.png'
+import img_1 from '../../assets/gameShooter/img_1.png'
+import img_2 from '../../assets/gameShooter/img_2.png'
+import img_3 from '../../assets/gameShooter/img_3.png'
+import img_4 from '../../assets/gameShooter/img_4.png'
+import img_5 from '../../assets/gameShooter/img_5.jpg'
+import img_6 from '../../assets/gameShooter/img_6.jpg'
+import img_7 from '../../assets/gameShooter/img_7.jpg'
+import img_8 from '../../assets/gameShooter/img_8.jpg'
 
 export const getImage = (count) => {
   let currentImg

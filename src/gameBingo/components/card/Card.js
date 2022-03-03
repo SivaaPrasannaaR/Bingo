@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react'
-import { useDataContext } from '../context/DataContext'
-import { RecomendedNumber } from './functions/RecomendedNumber'
-import { ScoreCheckMain } from './scoreCheck/ScoreCheckMain'
-import { updateNumberForPlayers } from './functions/updateNumberForPlayers'
-import { player } from './functions/AssignValues'
+import React from 'react'
+import { RecomendedNumber } from '../../functions/RecomendedNumber'
+import { ScoreCheckMain } from '../scoreCheck/ScoreCheckMain'
+import { updateNumberForPlayers } from '../../functions/updateNumberForPlayers'
+import { player } from '../../functions/AssignValues'
+import { useDataContext } from '../../../context/DataContext'
 
 export default function Card(props) {
   const {
@@ -18,7 +18,7 @@ export default function Card(props) {
     setBgColor,
   } = useDataContext()
 
-  const onClickHandler = useCallback(() => {
+  const onClickHandler = React.useCallback(() => {
     updateNumberForPlayers(props.val.num)
     // setNumberOneHolder(player.p1)
     // setNumberTwoHolder(player.p2)

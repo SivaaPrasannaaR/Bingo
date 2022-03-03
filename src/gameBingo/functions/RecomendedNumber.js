@@ -1,4 +1,4 @@
-import { AssignZeroValueToArray } from '../../generalFunction/AssignValueToArray'
+import { AssignZeroValueToArray } from '../../commonFunction/AssignValueToArray'
 import { nLen } from './AssignValues'
 
 let recomendateNum = 13

@@ -1,0 +1,13 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.secondPlayerCheck {
+  background-color: teal;
+  border: none;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 1px 6px #ccc;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 28px;
+}

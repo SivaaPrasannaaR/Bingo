@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
-import { useDataContext } from '../context/DataContext'
-import { useUserContext } from '../context/UserContext'
-import { player } from '../components/functions/AssignValues'
-import { GenerateBingoNumbers } from '../components/functions/GenerateBingoNumbers'
+import React from 'react'
+import { useDataContext } from '../../../context/DataContext'
+import { useUserContext } from '../../../context/UserContext'
 
-const Dashboard = (props) => {
+import { GenerateBingoNumbers } from '../../functions/GenerateBingoNumbers'
+import { toDisplayPayerBoard } from '../../functions/toDisplayPayerBoard'
+import { player } from '../../functions/AssignValues'
+
+const Dashboard = ({ setDisplayBoard }) => {
   const { user, logoutUser } = useUserContext()
   const { setNumberOneHolder, setNumberTwoHolder } = useDataContext()
 
@@ -14,11 +16,8 @@ const Dashboard = (props) => {
     await setNumberOneHolder(player.p1)
     await setNumberTwoHolder(player.p2)
 
-    props.display(true)
+    toDisplayPayerBoard(setDisplayBoard, 'p1')
     // setBgColor(!bgColor)
-
-    // console.log(player.p1)
-    // console.log(player.p2)
   }
   return (
     <div className="dashboardContainer">
