@@ -19,6 +19,9 @@ const Dashboard = ({ setDisplayBoard }) => {
     toDisplayPayerBoard(setDisplayBoard, 'p1')
     // setBgColor(!bgColor)
   }
+
+  const logoutAccount = () => {}
+
   return (
     <div className="dashboardContainer">
       <div>

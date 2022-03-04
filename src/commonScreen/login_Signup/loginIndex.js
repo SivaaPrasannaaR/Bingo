@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import Signin from './signin'
-import Signup from './signup'
-import { useUserContext } from '../../context/UserContext'
-import styles from './LoginFormCard.module.scss'
+import React, { useState } from "react"
+import Signin from "./signin"
+import Signup from "./signup"
+import { useUserContext } from "../../context/UserContext"
+import styles from "./LoginFormCard.module.scss"
 
 const Auth = () => {
   const [index, setIndex] = useState(false)
@@ -21,7 +21,7 @@ const Auth = () => {
     <div className="container">
       {!index ? <Signin /> : <Signup />}
       <p onClick={toggleIndex} className={styles.ppp}>
-        {!index ? 'New user? Click here ' : 'Already have an acount?'}
+        {!index ? "New user? Click here " : "Already have an acount?"}
       </p>
       <button
         onClick={() => handleSocialMediaOnClick(googleProvider)}

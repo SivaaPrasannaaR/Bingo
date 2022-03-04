@@ -1,12 +1,11 @@
-import { Route, Switch } from 'react-router-dom'
-import React, { lazy } from 'react'
+import { Route, Switch } from "react-router-dom"
+import React, { lazy } from "react"
+import ScrollToTop from "./ScrollTop.js"
+import { Router } from "react-router-dom"
 
-const Login = lazy(
-  () => import('../homehub-site/login/LoginScreen/LoginScreen')
-)
-const Signup = lazy(
-  () => import('../homehub-site/signup/SignupScreen/SignupScreen')
-)
+const Login = lazy(() => import("../commonScreen/login_Signup/loginIndex.js"))
+const BingoGame = lazy(() => import("../gameBingo/screen/BingoIndex.js"))
+const ShooterGame = lazy(() => import("../gameShooter/screen/ShooterIndex.js"))
 
 const RootRouter = React.memo(() => {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -28,10 +27,14 @@ const RootRouter = React.memo(() => {
   // }, [authenticated]);
 
   return (
-    <Switch>
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
-    </Switch>
+    <Router>
+      <ScrollToTop />
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/bingogame" component={BingoGame} />
+        <Route exact path="/shootergame" component={ShooterGame} />
+      </Switch>
+    </Router>
   )
 })
 

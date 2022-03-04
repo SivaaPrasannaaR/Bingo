@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState } from "react"
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -8,8 +8,9 @@ import {
   sendPasswordResetEmail,
   signInWithPopup,
   GoogleAuthProvider,
-} from 'firebase/auth'
-import { auth } from '../utils/firebase_config'
+} from "firebase/auth"
+import { auth } from "../utils/firebase_config"
+import { useHistory } from "react-router-dom"
 
 export const UserContext = createContext({})
 
@@ -20,7 +21,9 @@ export const useUserContext = () => {
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
+
+  const history = useHistory()
 
   useState(() => {
     setLoading(true)
@@ -30,7 +33,7 @@ export const UserContextProvider = ({ children }) => {
       } else {
         setUser(null)
       }
-      setError('')
+      setError("")
       setLoading(false)
     })
     return unsubscribe
@@ -58,6 +61,7 @@ export const UserContextProvider = ({ children }) => {
   }
 
   const logoutUser = () => {
+    window.location.href = "/login"
     signOut(auth)
   }
 
@@ -75,6 +79,7 @@ export const UserContextProvider = ({ children }) => {
         const socialMediaUser = result.user
         setUser(socialMediaUser)
         console.log(socialMediaUser)
+        window.location.href = "/home"
       })
       .catch((error) => {
         // const errorCode = error.code

@@ -1,11 +1,16 @@
-import React from 'react'
-import { AssignOrderValueToArray } from '../../commonFunction/AssignValueToArray'
-import DisplayPlayers from './DisplayPlayers'
+import React from "react"
+import DisplayPlayers from "./DisplayPlayers"
 
 export const Players = (props) => {
-  let arr = AssignOrderValueToArray(props.playerCount)
+  const [currentPlayer, setCurrentPlayer] = React.useState(1)
 
-  // const [currentPlayer, setCurrentPlayer] = useState(1)
+  const changeCurrentPlayer = () => {
+    setCurrentPlayer((prevState) =>
+      prevState > props.playerCount - 1
+        ? prevState - props.playerCount + 1
+        : prevState + 1
+    )
+  }
 
   return (
     <div>
@@ -14,13 +19,13 @@ export const Players = (props) => {
           className="shooterWrapper"
           style={{ gridTemplateColumns: `repeat(${props.playerCount}, auto)` }}
         >
-          {arr.map((item, index) => {
+          {Array.from(new Array(props.playerCount)).map((_, index) => {
             return (
               <DisplayPlayers
-                player={item}
                 key={index + 1}
-                playerCount={props.playerCount}
-                // currentPlayer={currentPlayer}
+                currentPlayer={currentPlayer}
+                isTimeToPlay={index + 1 != currentPlayer}
+                changeCurrentPlayer={changeCurrentPlayer}
               />
             )
           })}

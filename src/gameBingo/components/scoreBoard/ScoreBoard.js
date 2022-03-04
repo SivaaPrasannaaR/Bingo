@@ -11,17 +11,17 @@ const ScoreBoard = ({ setDisplayBoard }) => {
     toDisplayPayerBoard(setDisplayBoard, player)
   }
   return (
-    <div className="scoreBoardContainer">
+    <div className={styles.scoreBoardContainer}>
       <div className="scoreDiv">
         <h1>Score Board</h1>
-        <div className="opponentChoice">
+        <div>
           <h2>Opponent Choice</h2>
-          <button className="boardButton">{recNumber}</button>
+          <button className={styles.boardButton}>{recNumber}</button>
         </div>
-        <div className="myScoreDiv">
+        <div>
           <h3>My Score: {bingo.substring(0, p1Score)}</h3>
         </div>
-        <div className="opponentScoreDiv">
+        <div>
           <h3>Opponent Score: {bingo.substring(0, p2Score)}</h3>
         </div>
         <div>

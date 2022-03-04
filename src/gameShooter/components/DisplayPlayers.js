@@ -1,7 +1,7 @@
-import React from 'react'
-import DisplayImage from './DisplayImage'
-import { generateRandomNum } from '../functions/generateRandomNum'
-import { currentPlayer } from '../functions/AllShooterValue'
+import React from "react"
+import DisplayImage from "./DisplayImage"
+import { generateRandomNum } from "../functions/generateRandomNum"
+// import { currentPlayer } from '../functions/AllShooterValue'
 
 const DisplayPlayers = (props) => {
   const [box1Count, setBox1Count] = React.useState(0)
@@ -66,21 +66,6 @@ const DisplayPlayers = (props) => {
       ),
   }
 
-  // const [isButtonDisabled, setIsButtonDisabled] = React.useState(true)
-
-  // useEffect(() => {
-  //   if (currentPlayer.playerTime > props.playerCount) {
-  //     currentPlayer.playerTime = 1
-  //   } else {
-  //     setDisableButton()
-  //   }
-  //   const setDisableButton = () => {
-  //     setIsButtonDisabled(false)
-  //   }
-  // }, [])
-
-  console.log('currentPlayer', currentPlayer.playerTime)
-
   const [diceNumber, setDiceNumber] = React.useState(generateRandomNum())
 
   const handleRandomNum = () => {
@@ -99,19 +84,8 @@ const DisplayPlayers = (props) => {
       handleBox9Count.add()
     }
 
-    // if (currentPlayer.playerTime > props.playerCount) {
-    //   currentPlayer.playerTime = 1
-    // } else {
-    //   currentPlayer.playerTime = currentPlayer.playerTime + 1
-    //   setIsButtonDisabled(false)
-    // }
+    props.changeCurrentPlayer()
   }
-
-  // const handleNum = () => {
-  //   for (let i = 0; i < 1000; i++) {
-  //     handleRandomNum()
-  //   }
-  // }
 
   return (
     <div>
@@ -119,8 +93,13 @@ const DisplayPlayers = (props) => {
         <button
           onClick={handleRandomNum}
           className="rollDiceButton"
-          // disabled={props.player != currentPlayer.playerTime}
+          disabled={props.isTimeToPlay}
           // disabled={isButtonDisabled}
+          style={
+            props.isTimeToPlay
+              ? { backgroundColor: "red" }
+              : { backgroundColor: "teal" }
+          }
         >
           {diceNumber}
         </button>
