@@ -20,7 +20,7 @@ function App() {
           <>
             {user ? (
               <Switch>
-                <Route exact path="/home">
+                <Route exact path="/">
                   <HomeIndex />
                 </Route>
                 <Route exact path="/bingogame">
